@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Engine</title>
+
+    <link rel="stylesheet" href="results.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="main">
+        <img id="logo" src="img/logo.png" />
+        <input type="text" id="txtSearch" />
+        <hr />
+        <div id="results">
+            <span class="total-results">Cerca de 13.750.000.000 resultados (0,65 segundos) </span>
+            <div class="result">
+
+                <h3>The Last of Us™ Part I - PlayStation</h3>
+                <span>
+                    Se requiere la función de vibración · Se requiere el efecto de gatillo
+                    · Juego offline activado
+                    · 1 jugador · Compatible con el Uso a distancia · Compatible con ...
+                </span>
+            </div>
+            <div class="result">
+                <h3>The Last of Us™ Part I - PlayStation</h3>
+                <span>
+                    Se requiere la función de vibración · Se requiere el efecto de gatillo
+                    · Juego offline activado
+                    · 1 jugador · Compatible con el Uso a distancia · Compatible con ...
+                </span>
+            </div>
+            <div class="result">
+                <h3>The Last of Us™ Part I - PlayStation</h3>
+                <span>
+                    Se requiere la función de vibración · Se requiere el efecto de gatillo
+                    · Juego offline activado
+                    · 1 jugador · Compatible con el Uso a distancia · Compatible con ...
+                </span>
+            </div>
+        </div>
+
+<script>
+  let aux = document.location.href.split('?query=');
+  let query = aux[1];
+  document.getElementById("txtSearch").value = query;
+
+  fetch('http://localhost:8080/api/search?query=' + query)
+  .then(response => response.json())
+  .then(json => {
+    console.log(json)
+    for(let resultSearch of json) {
+
+    }
+  });
+
+  function getHtmlResultSearch(){
+    let title = 'The Last of Us™ Part I - PlayStation'
+    let description = 'Se requiere la función de vibración · Se requiere el efecto de gatillo · Juego offline activado · 1 jugador · Compatible con el Uso a distancia · Compatible con ...'
+    return `<div class="result">
+
+<h3>${title}</h3>
+<span>${description}</span>
+</div>`;
+  }
+</script>
+
+
+</body>
+
+</html>
